@@ -41,8 +41,8 @@ In config directory following files are searched:
   - ```MQTT_SERVER```: mandatory, is host of MQTT server  
   - ```MQTT_USER```: optional, is user for MQTT server
   - ```MQTT_PASSWORD```: optional, is password for MQTT server
-  - ```LOG_LEVEL```: optional, is password for MQTT server. Permitted levels are:
-    - 0: log none
+  - ```LOG_LEVEL```: optional, is logging level. Permitted levels are:
+    - 0: log none (*default*)
     - 1: log only Warnings
     - 2: log Warnings and Errors
     - 3: log Warnings, Errors and Info
