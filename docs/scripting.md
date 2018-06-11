@@ -12,6 +12,7 @@ Scripting Documentation
 * *mqtt(topic, payload)*: send to MQTT broker a message with specified *topic* and *payload*
 * *schedule(sec, command)*: schedule a string *command* to be executed after *sec* seconds
 * *schedules((sec, command), ...)*: *n* schedules can be specified as tuples (*sec*, *command*); for each tuple a *command* is scheduled after *sec* seconds
+* *tonoff(id, sec_on, sec_off, command_on, command_off)*: execute *command_on* after *sec_on* seconds and *command_off* after *sec_on*+*sec_off* seconds; if another message is received before *sec_on*+*sec_off* seconds is ignored
 * *log(level, message)*: log (on stdout or file depending by configuration) a *message* with specified priority *level* (1=ERROR, 4=DEBUG)
 * *nop()*: no-operation
 * *ifte(condition, if_true, if_false)*: string commands *if_true* or *if_false* are executed respectively if evaluated *condition* string is true or false

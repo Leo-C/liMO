@@ -21,7 +21,8 @@ from libs.heaputils import eval_cmd, exec_cmd, heap_get_default, heap_set
 
 
 def ifte(cond, if_true, if_false):
-    if cond:
+    tf = eval_cmd(cond, {})
+    if tf:
         exec_cmd(if_true, {})
     else:
         exec_cmd(if_false, {})
