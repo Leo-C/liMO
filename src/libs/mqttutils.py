@@ -64,7 +64,8 @@ def mqtt_init(config_dir, MQTTsrv, MQTTuser, MQTTpwd):
     global mqttserver
     mqttserver = MQTTsrv
     mqttcl = mqtt.Client()
-    #mqtt.username_pw_set(MQTTuser, MQTTpwd)
+    if MQTTsrv != "":
+        mqttcl.username_pw_set(MQTTuser, MQTTpwd)
     mqttcl.on_message = mqtt_message
     mqttcl.on_connect = on_connect
     mqttcl.on_disconnect = on_disconnect
