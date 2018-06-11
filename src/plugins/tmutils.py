@@ -28,10 +28,10 @@ def msched(*args):
         cmd = str(a[1])
         schedule(delay, cmd)
 
-def schedule_onoff(id, sec, cmd_on, cmd_off):
+def schedule_onoff(id, sec_on, sec_off, cmd_on, cmd_off):
     v = heap_get_default(str(id), 'new')
     if v == 'new':
         heap_set(str(id), 'START')
-        exec_cmd(cmd_on, {})
-        schedule(sec, cmd_off)
-        schedule(sec, "unset('"+str(id)+"')")
+        schedule(sec_on, cmd_on)
+        schedule(sec_off, cmd_off)
+        schedule(sec_off, "unset('"+str(id)+"')")
