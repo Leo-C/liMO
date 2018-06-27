@@ -33,5 +33,16 @@ def schedule_onoff(id, sec_on, sec_off, cmd_on, cmd_off):
     if v == 'new':
         heap_set(str(id), 'START')
         schedule(sec_on, cmd_on)
-        schedule(sec_off, cmd_off)
-        schedule(sec_off, "unset('"+str(id)+"')")
+        schedule(sec_on+sec_off, cmd_off)
+        schedule(sec_on+sec_off, "unset('"+str(id)+"')")
+
+def multi_schedule_onoff(id, *args):
+    v = heap_get_default(str(id), 'new')
+    if v == 'new':
+        heap_set(str(id), 'START')
+        delay = 0
+        for a in args:
+            delay += int(a[0])
+            cmd = str(a[1])
+            schedule(delay, cmd)
+        schedule(delay, "unset('"+str(id)+"')")

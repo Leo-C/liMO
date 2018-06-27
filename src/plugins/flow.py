@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
 along with liMO.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-from libs.heaputils import eval_cmd, exec_cmd, heap_get_default, heap_set
+from libs.heaputils import eval_cmd, exec_cmd, heap_get_default, heap_set, heap_unset
 
 
 def ifte(cond, if_true, if_false):
@@ -31,3 +31,16 @@ def ifundef(var, val, cmd):
     if heap_get_default(var, "") == "":
         heap_set(var, val)
         exec_cmd(cmd, {})
+
+def lock(id, cmd):
+    v = heap_get_default(str(id), 'new')
+    if v == 'new':
+        exec_cmd(cmd, {})
+        return True
+    else:
+        return False
+
+def unlock(id):
+    v = heap_get_default(str(id), 'new')
+    if v != 'new':
+        heap_unset(str(id))
