@@ -63,7 +63,7 @@ File ```events.properties``` specify registered *actions* with following format:
 ```MQTT_TOPIC=<python script>```  
 where ```MQTT_TOPIC``` is a registered MQTT topic and *```<python script>```* is a single-line script executed when specified topic is received.  
 
-Scripts run in a sand-box and can be structured as 1..n command/functions separated by ';' (like python-syntax)  using python built-ins, *liMO* [base functions](docs/scripting.md) and user-functions added as [plugin](# Plugins).  
+Scripts run in a sand-box and can be structured as 1..n command/functions separated by ';' (like python-syntax) using python built-ins, *liMO* [base functions](docs/scripting.md) and user-functions added as [plugin](# Plugins).  
 
 Functions share a memory-persistent *heap* (pre-initialized with file ```heap.properties```); variables can be refernced as function parameters in scripts.  
 
@@ -79,7 +79,7 @@ Plugins are python files (**.py*) contained into ```<base_dir>/plugin```.
 These python files expose python functions referenced in ```scripting.properties``` configuration file with syntax:  
 ```<function_name_in_sandbox>=<module>.<function_name_in_py_file>```   
 
-Note that *plugins* module (directory itself) must not be included in fully-qulified name of python funtion. E.g.:  
+Note that *plugins* module (directory itself) must not be included in fully-qualified name of python funtion. E.g.:  
 ```len=stringutils.strlen```  
 is referencing *strlen()* function into file ```stringutils.py``` (*module*) under ```<base_dir>/plugins``` directory (implicit) using it as *len()* in file ```events.properties```
 
