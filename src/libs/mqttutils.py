@@ -80,6 +80,11 @@ def mqtt_init(config_dir, MQTTsrv, MQTTuser, MQTTpwd):
     set_subscriptions()
 
 
-def mqtt_publish(topic, payload):
+def mqtt_publish(topic, payload, qos=0):
     global mqttcl
-    mqttcl.publish(topic, payload)
+    mqttcl.publish(topic, payload, qos, False)
+
+
+def mqtt_publish_r(topic, payload, qos=0):
+    global mqttcl
+    mqttcl.publish(topic, payload, qos, True)

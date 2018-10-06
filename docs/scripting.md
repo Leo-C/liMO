@@ -9,7 +9,8 @@ Scripting Documentation
   
 ### Scripting functions
 
-* *mqtt(topic, payload)*: send to MQTT broker a message with specified *topic* and *payload*
+* *mqtt(topic, payload, [qos=0])*: send to MQTT broker a message with specified *topic* and *payload* and optionally *qos* value
+* *mqtt_r(topic, payload, [qos=0])*: send to MQTT broker a message with specified *topic* and *payload* and optionally *qos* value, retaining message for subscribers to specified topic
 * *schedule(sec, command)*: schedule a string *command* to be executed after *sec* seconds
 * *schedules((sec, command), ...)*: *n* schedules can be specified as tuples (*sec*, *command*); for each tuple a *command* is scheduled after *sec* seconds
 * *tonoff(id, sec_on, sec_off, command_on, command_off)*: execute *command_on* after *sec_on* seconds and *command_off* after *sec_on*+*sec_off* seconds; if another message is received before *sec_on*+*sec_off* seconds is ignored
